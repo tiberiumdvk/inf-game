@@ -1,0 +1,14 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    // We use var requires for loading assets
+    "no-var-requires": false,
+    // it's logical to have for example width next to height although it's not alphabetical
+    "object-literal-sort-keys": false
+  },
+  "rulesDirectory": []
+}
