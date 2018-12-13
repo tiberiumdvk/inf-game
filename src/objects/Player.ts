@@ -1,4 +1,5 @@
 export default class Player extends Phaser.GameObjects.Sprite {
+    public health: number;
     public sprite: Phaser.Physics.Arcade.Sprite;
     private keys: Phaser.Input.Keyboard.CursorKeys;
 

@@ -9,6 +9,7 @@ import "phaser";
 require("styles/app.css");
 
 import DungeonScene from "./scenes/dungeonScene";
+import MenuScene from "./scenes/menuScene";
 
 // main game configuration
 const config: GameConfig = {
@@ -21,7 +22,7 @@ const config: GameConfig = {
     },
     default: "arcade",
   },
-  scene: DungeonScene,
+  scene: [ MenuScene, DungeonScene ],
 
   // @ts-ignore
   pixelArt: true,
@@ -38,4 +39,5 @@ export class Game extends Phaser.Game {
 // When the page is loaded, create the game instance
 window.onload = () => {
   const game = new Game(config);
+  game.scene.start("MenuScene");
 };

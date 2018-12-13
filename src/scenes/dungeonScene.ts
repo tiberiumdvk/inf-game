@@ -24,12 +24,20 @@ export default class DungeonScene extends Phaser.Scene {
       frameWidth: 48,
       frameHeight: 64,
     });
+    this.load.spritesheet("tiles", "assets/tilesets/buch-tileset-48px-extruded.png", {
+      frameWidth: 48,
+      frameHeight: 64,
+    });
     // this.load.spritesheet("fireball", "assets/spritesheets/fireball-64x64px.png", {
     //   frameWidth: 64,
     // });
   }
 
   public create(): void {
+
+    this.sound.stopAll();
+    this.sound.play("soundtrack-extreme");
+
     this.resize();
 
     this.level++;
@@ -209,9 +217,12 @@ export default class DungeonScene extends Phaser.Scene {
     const playerRoom = this.dungeon.getRoomAt(playerTileX, playerTileY);
 
     this.tilemapVisibility.setActiveRoom(playerRoom);
+
+    if (this.player.health <= 0) {
+      this.sound.play("soundtrack-extreme");
+    }
   }
 
-  // idk
   private shoot(pointer) {
     const fireball = this.fireballs.get(pointer.x, pointer.y);
     if (fireball) {
